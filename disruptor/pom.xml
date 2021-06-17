@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>my-all-jar-package</artifactId>
+        <groupId>com.lingbao</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>disruptor</artifactId>
+
+    <properties>
+        <disruptor.version>3.4.2</disruptor.version>
+        <!--<disruptor.source.version>3.4.3</disruptor.source.version>-->
+    </properties>
+
+    <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/com.lmax/disruptor -->
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>${disruptor.version}</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.lmax.source</groupId>-->
+            <!--<artifactId>disruptor</artifactId>-->
+            <!--<version>${disruptor.source.version}</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.lingbao</groupId>
+            <artifactId>base</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+</project>

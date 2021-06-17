@@ -1,0 +1,14 @@
+server:
+  port: 8085
+spring:
+  kafka:
+    bootstrap-servers: 192.168.0.1
+    consumer:
+      enable-auto-commit: true
+      session-timeout-ms: 500
+      auto-commit-interval: 10
+      group-id: group_1
+      auto-offset-reset: latest
+      concurrency: 3
+      max-poll-records: 100
+      max-poll-interval-ms: 30000
