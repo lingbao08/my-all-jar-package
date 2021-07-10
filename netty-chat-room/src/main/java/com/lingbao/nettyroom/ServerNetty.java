@@ -38,17 +38,18 @@ public class ServerNetty {
                     @Override
                     protected void initChannel(Channel ch) throws Exception {
                         //魔数校验，即对我们封装的协议进行校验
-                        ch.pipeline().addLast(new MoShuChannelHandler());
-                        //1. 传入消息解码
-                        ch.pipeline().addLast(PacketCodecHandler.INSYANCE);
+                        ch.pipeline()
+                                .addLast(new MoShuChannelHandler())
+                                //1. 传入消息解码
+                                .addLast(PacketCodecHandler.INSYANCE)
 
-                        //2. 添加登录请求的handler
-                        ch.pipeline().addLast(LoginRequestHandler.INSTANCE);
-                        //添加权限校验的处理器
-                        ch.pipeline().addLast(AuthHandler.INSTANCE);
+                                //2. 添加登录请求的handler
+                                .addLast(LoginRequestHandler.INSTANCE)
+                                //添加权限校验的处理器
+                                .addLast(AuthHandler.INSTANCE)
 
-                        //将下面所有的指令handler合并到一个中
-                        ch.pipeline().addLast(IMHandler.INSTANCE);
+                                //将下面所有的指令handler合并到一个中
+                                .addLast(IMHandler.INSTANCE);
 
 //
 //                ch.pipeline().addLast(CreateGroupRequestHandler.INSTANCE);
