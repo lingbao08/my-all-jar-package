@@ -10,8 +10,8 @@ import java.util.Random;
 
 public class IDUtil {
 
-    public static String getUserId() {
-        return new Random().nextInt(10000)+"";
+    public static int getUserId() {
+        return new Random().nextInt(10000);
     }
 
     public static String getGroupId(){

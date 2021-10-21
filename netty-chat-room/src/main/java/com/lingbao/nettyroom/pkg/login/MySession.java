@@ -1,5 +1,8 @@
 package com.lingbao.nettyroom.pkg.login;
 
+import com.lingbao.nettyroom.entity.Member;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,14 +13,10 @@ import lombok.NoArgsConstructor;
  **/
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class MySession {
 
-    private String userId;
+    private Member member;
 
-    private String userName;
-
-    public MySession(String userId, String userName) {
-        this.userId = userId;
-        this.userName = userName;
-    }
 }

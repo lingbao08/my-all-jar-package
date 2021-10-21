@@ -1,15 +1,12 @@
 package com.lingbao.nettyroom.pkg.login;
 
 
-import com.lingbao.nettyroom.pkg.Attributes;
+import com.lingbao.nettyroom.constant.Attributes;
 import io.netty.channel.Channel;
 import io.netty.channel.group.ChannelGroup;
 
 import java.util.List;
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 
 
 /**
@@ -20,7 +17,14 @@ import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 
 public class MySessionUtil {
 
-    private static final ConcurrentHashMap<String, Channel> channelMap = new ConcurrentHashMap<>();
+    /**
+     * 所有用户自己的channel
+     */
+    private static final ConcurrentHashMap<Integer, Channel> channelMap = new ConcurrentHashMap<>();
+
+    /**
+     * 所有群的channelGroup
+     */
     private static final ConcurrentHashMap<String, ChannelGroup> channelGroupMap = new ConcurrentHashMap<>();
 
     /**
@@ -30,7 +34,7 @@ public class MySessionUtil {
      * @param channel
      */
     public static void bindSession(MySession session, Channel channel) {
-        channelMap.put(session.getUserId(), channel);
+        channelMap.put(session.getMember().getUserId(), channel);
         channel.attr(Attributes.SESSION).set(session);
     }
 
@@ -42,7 +46,7 @@ public class MySessionUtil {
      */
     public static void unBindSession(Channel channel) {
         if (hasLogin(channel)) {
-            channelMap.remove(getSession(channel).getUserId());
+            channelMap.remove(getSession(channel).getMember().getUserId());
             channel.attr(Attributes.SESSION).set(null);
         }
     }
@@ -75,7 +79,7 @@ public class MySessionUtil {
      * @param userId
      * @return
      */
-    public static Channel getChannel(String userId) {
+    public static Channel getChannel(Integer userId) {
         return channelMap.get(userId);
     }
 

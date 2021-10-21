@@ -1,8 +1,8 @@
 package com.lingbao.nettyroom.pipeline.server;
 
 
-import com.lingbao.nettyroom.entity.MessageRequestPacket;
-import com.lingbao.nettyroom.entity.MessageResponsePacket;
+import com.lingbao.nettyroom.packet.request.MessageRequestPacket;
+import com.lingbao.nettyroom.packet.resp.MessageResponsePacket;
 import com.lingbao.nettyroom.pkg.login.MySession;
 import com.lingbao.nettyroom.pkg.login.MySessionUtil;
 import io.netty.channel.Channel;
@@ -30,8 +30,7 @@ public class MessageRequestHandler extends SimpleChannelInboundHandler<MessageRe
         //2. 构建出该消息在接收方要显示的名字和消息内容
         MessageResponsePacket messageResponsePacket = new MessageResponsePacket();
         messageResponsePacket.setMsg(msg.getMsg());
-        messageResponsePacket.setFromUserId(session.getUserId());
-        messageResponsePacket.setFromUserName(session.getUserName());
+        messageResponsePacket.setFromMember(session.getMember());
 
         //3. 拿到消息接收方的channel
         Channel toChannel = MySessionUtil.getChannel(msg.getToUserId());
@@ -43,7 +42,7 @@ public class MessageRequestHandler extends SimpleChannelInboundHandler<MessageRe
             } else {
                 MySession toSession = MySessionUtil.getSession(toChannel);
                 messageResponsePacket = new MessageResponsePacket();
-                messageResponsePacket.setMsg("【" + toSession.getUserName() + "】用户已离线！！发送失败！");
+                messageResponsePacket.setMsg("【" + toSession.getMember().getUserName() + "】用户已离线！！发送失败！");
                 ctx.channel().writeAndFlush(messageResponsePacket);
             }
         }

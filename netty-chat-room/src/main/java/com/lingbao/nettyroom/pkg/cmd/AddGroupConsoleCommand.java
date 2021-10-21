@@ -1,7 +1,9 @@
 package com.lingbao.nettyroom.pkg.cmd;
 
-import com.lingbao.nettyroom.entity.AddGroupRequestPacket;
+import com.lingbao.nettyroom.packet.request.AddGroupRequestPacket;
 import io.netty.channel.Channel;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 
 import java.util.Scanner;
 
@@ -18,11 +20,15 @@ public class AddGroupConsoleCommand implements ConsoleCommand {
         System.out.println("请输入组ID：");
 
         String next = scanner.next();
-        //如果是空的，就把自己的ID赋值给它
-//        if(StringUtils.isEmpty(next)){
-//            System.out.println("组ID不能为空！");
-//            return;
-//        }
+
+        if(StringUtils.isEmpty(next)){
+            System.out.println("组ID不能为空！");
+            return;
+        }
+
+        if (!StringUtils.startsWith(next, "G")) {
+            next = "G-" + NumberUtils.toInt(next);
+        }
 
 
         addGroupRequestPacket.setGroupId(next);

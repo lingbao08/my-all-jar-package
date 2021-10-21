@@ -4,8 +4,8 @@
 ##使用
 
 启动下面的类：
- - `com.lingbao.nettyroom.ServerNetty` 服务端类
- - `com.lingbao.nettyroom.ClientNetty` 聊天室1
+ - `com.lingbao.nettyroom.start.ServerNetty` 服务端类
+ - `com.lingbao.nettyroom.start.ClientNetty` 聊天室1
  - `com.lingbao.nettyroom.ClientNetty2` 聊天室2
 
 
@@ -22,8 +22,8 @@
 
 ---------------
 
-最后，注释有点少，需要重新读一遍，然后补充注释和readme文档。
-
+大体路径：
+所有的请求经过command，根据指定packet分发到对应的server端的handler中去，然后server端的handler处理完后会给client端的handler中去。
 
 
 

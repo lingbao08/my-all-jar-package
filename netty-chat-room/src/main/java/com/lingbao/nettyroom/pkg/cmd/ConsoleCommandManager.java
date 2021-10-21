@@ -18,7 +18,7 @@ public class ConsoleCommandManager implements ConsoleCommand {
 
     public ConsoleCommandManager() {
         this.cmdMap = new HashMap<>();
-        cmdMap.put("send", new SendToUserConsoleCommand());
+        cmdMap.put("sd", new SendToUserConsoleCommand());
         cmdMap.put("out", new LogoutConsoleCommand());
         cmdMap.put("cg", new CreateGroupConsoleCommand());
         cmdMap.put("ag", new AddGroupConsoleCommand());
@@ -31,9 +31,14 @@ public class ConsoleCommandManager implements ConsoleCommand {
         ConsoleCommand consoleCommand = cmdMap.get(next);
         if (consoleCommand != null)
             consoleCommand.exec(scanner, channel);
-        else
-            System.out.println("无法识别的指令！" + next);
-
+        else {
+            System.out.println("无法识别的指令！" + next + "请尝试使用以下指令：\n"
+                    + " - sd : 发送消息\n"
+                    + " - out : 退出登录\n"
+                    + " - cg : 创建组\n"
+                    + " - ag : 添加组\n"
+                    + " - ls : 展示群内成员");
+        }
     }
 
 

@@ -1,7 +1,7 @@
 package com.lingbao.nettyroom.pipeline;
 
 
-import com.lingbao.nettyroom.pkg.PacketCodeC;
+import com.lingbao.nettyroom.pkg.codec.PacketCodeC;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;

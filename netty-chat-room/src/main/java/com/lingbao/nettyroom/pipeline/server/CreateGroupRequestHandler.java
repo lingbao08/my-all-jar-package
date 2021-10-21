@@ -1,7 +1,8 @@
 package com.lingbao.nettyroom.pipeline.server;
 
-import com.lingbao.nettyroom.entity.CreateGroupRequestPacket;
-import com.lingbao.nettyroom.entity.CreateGroupResponsePacket;
+import com.lingbao.nettyroom.constant.Attributes;
+import com.lingbao.nettyroom.packet.request.CreateGroupRequestPacket;
+import com.lingbao.nettyroom.packet.resp.CreateGroupResponsePacket;
 import com.lingbao.nettyroom.pkg.login.MySessionUtil;
 import com.lingbao.nettyroom.utils.IDUtil;
 import io.netty.channel.Channel;
@@ -32,18 +33,18 @@ public class CreateGroupRequestHandler extends SimpleChannelInboundHandler<Creat
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, CreateGroupRequestPacket msg) throws Exception {
         //1. 先获取到所有的userId
-        List<String> userIdList = msg.getUserIdList();
+        List<Integer> userIdList = msg.getUserIdList();
         //2. 创建 channel 分组
         DefaultChannelGroup channelGroup = new DefaultChannelGroup(ctx.executor());
         //3. 将所有的用户名放入到一个新的list中
         //同时将用户的channel放到上面的channelGroup中
         List<String> nameList = new ArrayList<>();
-        for (String userId : userIdList) {
+        for (Integer userId : userIdList) {
             //从session中获取一下，查看该id是否正确，用户是否登录，对于不正确的不作处理
             Channel channel = MySessionUtil.getChannel(userId);
             if (channel != null) {
                 channelGroup.add(channel);
-                nameList.add(MySessionUtil.getSession(channel).getUserName());
+                nameList.add(MySessionUtil.getSession(channel).getMember().getUserName());
             }
         }
 
@@ -57,6 +58,7 @@ public class CreateGroupRequestHandler extends SimpleChannelInboundHandler<Creat
         //3.1 将该群组写入缓存中
         MySessionUtil.addChannelGroup(groupId, channelGroup);
 
+        ctx.channel().attr(Attributes.currentGroupId).set(groupId);
 
         //5. 给每个用户发送拉群通知--建群完毕！！
         channelGroup.writeAndFlush(groupResponsePacket);

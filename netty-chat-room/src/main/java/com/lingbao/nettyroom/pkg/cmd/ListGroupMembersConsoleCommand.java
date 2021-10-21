@@ -1,6 +1,6 @@
 package com.lingbao.nettyroom.pkg.cmd;
 
-import com.lingbao.nettyroom.entity.ListGroupMembersRequestPacket;
+import com.lingbao.nettyroom.packet.request.ListGroupMembersRequestPacket;
 import io.netty.channel.Channel;
 
 import java.util.Scanner;
@@ -16,7 +16,6 @@ public class ListGroupMembersConsoleCommand implements ConsoleCommand {
     public void exec(Scanner scanner, Channel channel) {
         ListGroupMembersRequestPacket groupRequestPacket = new ListGroupMembersRequestPacket();
 
-        System.out.println("群内的成员有：");
         channel.writeAndFlush(groupRequestPacket);
     }
 }

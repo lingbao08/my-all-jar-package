@@ -1,6 +1,6 @@
 package com.lingbao.nettyroom.pipeline.client;
 
-import com.lingbao.nettyroom.entity.CreateGroupResponsePacket;
+import com.lingbao.nettyroom.packet.resp.CreateGroupResponsePacket;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;

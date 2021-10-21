@@ -1,7 +1,7 @@
 package com.lingbao.nettyroom.pkg.login;
 
 
-import com.lingbao.nettyroom.pkg.Attributes;
+import com.lingbao.nettyroom.constant.Attributes;
 import io.netty.channel.Channel;
 import io.netty.util.Attribute;
 
