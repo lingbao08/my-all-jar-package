@@ -48,11 +48,8 @@ public class ServerNetty {
                                 .addLast(AuthHandler.INSTANCE)
 
                                 //将下面所有的指令handler合并到一个中
+                                //所有的requestHandler指令处理
                                 .addLast(IMHandler.INSTANCE)
-
-                                .addLast(CreateGroupRequestHandler.INSTANCE)
-
-                                .addLast(AddGroupRequestHandler.INSTANCE)
                                 //3. 添加消息的处理
                                 .addLast(MessageRequestHandler.INSTANCE)
                                 // 4. 传出消息编码

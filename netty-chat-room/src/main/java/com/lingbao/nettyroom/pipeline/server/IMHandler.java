@@ -12,6 +12,10 @@ import java.util.Map;
 
 
 /**
+ * 在{@link com.lingbao.nettyroom.start.ServerNetty}中添加了这个类后，
+ * {@link IMHandler}中的handlerMap所配置的所有的requestHandler，都不用去ServerNetty中进行添加了。
+ * 相当于是一个智能分流器。
+ *
  * @author lingbao08
  * @DESCRIPTION
  * @create 2019-02-24 20:03
