@@ -12,6 +12,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.util.Properties;
+import java.util.Random;
 
 /**
  * 一个简单的生产者
@@ -44,12 +45,16 @@ public class MyProducer {
         KafkaProducer<String, String> producer = new KafkaProducer<>(prop);
 
 
-        MyRecord myRecord = MyRecord.builder().id(1).msg("hello kafka!").build();
+        MyRecord myRecord = MyRecord.builder().id(new Random().nextInt(Integer.MAX_VALUE)).msg("hello kafka!").build();
 
-        //不带消息回执的
+        //不带消息回执的，默认是异步的，带上get变成同步的
 //        producer.send(new ProducerRecord<>("topic", JSON.toJSONString(myRecord))).get();
         //带消息回执的
-        producer.send(new ProducerRecord<>("topic", JSON.toJSONString(myRecord)),
+        producer.send(new ProducerRecord<>("topic",
+                        //分区的key
+                        myRecord.getId().toString(),
+                        //消息体
+                        JSON.toJSONString(myRecord)),
                 (metadata, e) -> {
                     if (metadata != null) {
                         log.info("发送的分区：{}，偏移量：{}", metadata.partition(), metadata.offset());

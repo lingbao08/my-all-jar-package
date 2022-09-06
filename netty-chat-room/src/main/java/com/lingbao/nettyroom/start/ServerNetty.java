@@ -47,7 +47,7 @@ public class ServerNetty {
                                 //添加权限校验的处理器
                                 .addLast(AuthHandler.INSTANCE)
 
-                                //将下面所有的指令handler合并到一个中
+                                //3. 将下面所有的指令handler合并到一个中
                                 //所有的requestHandler指令处理
                                 .addLast(IMHandler.INSTANCE)
                                 //3. 添加消息的处理

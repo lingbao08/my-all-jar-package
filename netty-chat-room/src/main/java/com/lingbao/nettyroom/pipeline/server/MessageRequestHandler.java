@@ -11,6 +11,8 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
 /**
+ * 添加消息的处理
+ *
  * @author lingbao08
  * @DESCRIPTION
  * @create 2019-02-23 18:58

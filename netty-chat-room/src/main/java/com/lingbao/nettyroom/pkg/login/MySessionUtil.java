@@ -18,12 +18,12 @@ import java.util.concurrent.ConcurrentHashMap;
 public class MySessionUtil {
 
     /**
-     * 所有用户自己的channel
+     * 所有用户自己的channel<用户ID，channel>
      */
     private static final ConcurrentHashMap<Integer, Channel> channelMap = new ConcurrentHashMap<>();
 
     /**
-     * 所有群的channelGroup
+     * 所有群的channelGroup<组ID，ChannelGroup>
      */
     private static final ConcurrentHashMap<String, ChannelGroup> channelGroupMap = new ConcurrentHashMap<>();
 
