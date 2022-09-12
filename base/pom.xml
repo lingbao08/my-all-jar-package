@@ -13,7 +13,7 @@
     <description>base project</description>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
         <commons-lang3.version>3.10</commons-lang3.version>
         <fastjson.version>1.2.54</fastjson.version>
         <lombok.version>1.18.12</lombok.version>

@@ -13,7 +13,7 @@
 
     <properties>
         <disruptor.version>3.4.2</disruptor.version>
-        <!--<disruptor.source.version>3.4.3</disruptor.source.version>-->
+<!--        <disruptor.source.version>3.4.3</disruptor.source.version>-->
     </properties>
 
     <dependencies>
