@@ -22,13 +22,19 @@ public class WaterServiceTest extends BaseTest {
     @Autowired
     private WaterService waterService;
 
+    /**
+     * 参数是可以空值的
+     * @param drinkName
+     * @param weight
+     * @param result
+     */
     @Test
     @Parameters({
             "nfsq,0,农夫山泉,true",
             "whh,100,娃哈哈,true",
             ",90,怡宝,true",
     })
-    public void drink(String drinkName, Integer weight, String result, boolean expect) {
+    public void drink(String drinkName, Integer weight, String result) {
         //此处没有用到expect，仅作展示，表示可以传进来
         Water water = Water.builder().name(drinkName).weight(weight).build();
 

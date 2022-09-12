@@ -11,9 +11,9 @@
         <module>netty-chat-room</module>
         <module>design-pattern</module>
         <module>junit-test</module>
-        <module>netty-upload-file</module>
         <module>springboot-start-test</module>
         <module>rocketmq</module>
+        <module>spring-bean</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

@@ -40,6 +40,12 @@ public class BaseTest implements ApplicationContextAware, EnvironmentAware {
     }
 
 
+    // 此处注入test环境
+    static {
+        System.setProperty("spring.profiles.active", "test");
+    }
+
+
     @ClassRule
     public static final SpringClassRule SPRING_CLASS_RULE = new SpringClassRule();
 
@@ -65,6 +71,7 @@ public class BaseTest implements ApplicationContextAware, EnvironmentAware {
 
 
     public static void print(String str) {
+        // 该部分不想走日志
         System.out.println("--------打印开始---------");
         System.out.println("打印内容：" + str);
         System.out.println("--------打印结束---------");

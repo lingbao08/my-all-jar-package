@@ -1,8 +1,14 @@
 package com.lingbao.junit.service;
 
 import com.lingbao.junit.model.Water;
+import com.lingbao.springboot.test.PhoneProperties;
+import com.lingbao.springboot.test.service.PhoneService;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import java.util.concurrent.Semaphore;
 
 /**
  * @author lingbao08
@@ -12,8 +18,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class WaterService {
 
-
     public String drink(Water water) {
+
 
         if (StringUtils.equals(water.getName(), "nfsq")) {
             return "农夫山泉";
